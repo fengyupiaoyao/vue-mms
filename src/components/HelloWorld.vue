@@ -95,7 +95,24 @@
 </template>
 
 <script>
+import testApi from "@/api/test.js";
+
 export default {
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      testApi
+        .getList()
+        .then(response => {
+          console.log("get3", response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
   name: "HelloWorld",
   props: {
     msg: String
